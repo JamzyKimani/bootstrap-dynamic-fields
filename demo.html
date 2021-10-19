@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Bootstrap Dynamic Fields</title>
+  </head>
+  <body>
+    <div class="panel panel-body py-5 px-5">
+    <h1>Bootstrap Dynamic Fields Demo</h1>
+    <h3 class="text-muted">Contact List Example</h3>
+    
+    <div class="row pt-3" id="student_list">
+     <div class="form-group col-md-6">
+      <label class="form-label">Student</label>
+      <input type="text" name="student_name[]" class="form-control" >
+     </div>
+    <div class="form-group col-md-3">
+      <label class="form-label">Gender</label>
+      <select name="gender[]" class="form-control">
+        <option selected>Choose...</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="NB">Non-Binary</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label class="form-label">Photo</label>
+      <input type="file" class="form-control">
+    </div>
+    <div>
+    
+    </div>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="dynamicfields.js" /> 
+    <script>
+      $('#student_list').DynamicFields();
+    </script>
+  </body>
+</html>
