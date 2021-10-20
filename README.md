@@ -2,6 +2,8 @@
 
 Simple, light-weight script for dynamically adding and removing Bootstrap form input fields. The script adds a handy + and - button to a Bootstrap .row div that dublicates and removes a row of form input fields as needed. 
 
+<a href="https://jamzykimani.github.io/bootstrap-dynamic-fields/demo/demo.html" target="_blank">**CHECK DEMO**</a>  
+
 ![Dynamic form fields for Bootstrap](https://github.com/JamzyKimani/bootstrap-dynamic-fields/blob/main/demo/demo.gif)
 
 **Disclaimer:** requires JQuery and Bootstrap 4^.
