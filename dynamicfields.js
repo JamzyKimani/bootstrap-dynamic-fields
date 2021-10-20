@@ -12,37 +12,44 @@
 */
 
 $.fn.DynamicFields = function() {
-  $(this).wrap('<div class="dynamic_fields_wrapper"></div>');
+  $(this).wrap('<div class="dynamic-fields-wrapper"></div>');
+  //get target div id
   var id = $(this).attr('id');
-  var els = $('#'+id+' .form-group');
-  var oldRowHTML = $(this).html();
-  var len = els.length;
-  var targetEl = els[len - 1];
-  var wrapper = document.createElement("div");
-  wrapper.appendChild(targetEl);
-  var targetLabelText = wrapper.querySelector('label').innerHTML;
-  var targetHTML = wrapper.innerHTML;
+  
+  //get all form inputs
+  var inputs = document.getElementById(id).querySelectorAll("input, select, checkbox, textarea");
 
-  addButtonHTML = targetHTML.replace('<label class="form-label">'+targetLabelText+'</label>', '');
-  addButtonHTML = addButtonHTML.replace('<div class="form-group">', '<div class="form-group"><label class="form-label">'+targetLabelText+'</label><div class="input-group">');
-  addButtonHTML = addButtonHTML.replace('</div>', '<button class="btn btn-success" type="button" id="'+id+'_button_"  onclick="DynamicFieldsAddRow(this.id);"> + </button></div></div>');
-  
-  var newRowHTML = oldRowHTML.replace(targetHTML, addButtonHTML );
-  $(this).html(newRowHTML);
-  var parent = $(this).parent();
-  var parentHTML = parent.html();
-  parent.html(parentHTML.replace(newRowHTML, '<div class="dynamic-fields-wrapper">'+newRowHTML+'</div>'));
-  
+  //get the last one
+  var len = inputs.length;
+  var targetEl = inputs[len - 1];
+  var targetElParent = targetEl.parentNode;
+
+  //create "+" button
+  var addBtn = document.createElement("button");
+  addBtn.className = "btn btn-success";
+  addBtn.type = "button";
+  addBtn.setAttribute('id', id+"__button__");
+  addBtn.setAttribute('onclick',"DynamicFieldsAddRow(this.id)");
+  addBtn.innerHTML = "+";
+
+  //append it to last input element as a Bootstrap input group
+  var wrapper = document.createElement("div");
+  wrapper.className = "input-group";
+  wrapper.appendChild(targetEl);
+  wrapper.appendChild(addBtn);
+
+  targetElParent.appendChild(wrapper);
 }
 
 function DynamicFieldsAddRow(btn_id) {
-  var divID = btn_id.replace('_button_', '');
+
+  var divID = btn_id.replace('__button__', '');
   var newID = divID.split('_')[0]+'_'+Math.floor(Math.random() * 10000).toString();
   var currentRow = $('#'+divID);
   var currentHTML = currentRow.html();
+
   var newRow = '<div class="row" id="'+newID+'">'+currentHTML+'</div>';
-  
-  newRow = newRow.replace(btn_id,newID+'_button_' );
+  newRow = newRow.replace(btn_id,newID+'__button__' );
   currentRow.parent().append(newRow);
  
   document.getElementById(btn_id).innerHTML = '-';
@@ -53,4 +60,12 @@ function DynamicFieldsAddRow(btn_id) {
 function DynamicFieldsDeleteRow(row_id) {
   var row = document.getElementById(row_id);
   row.parentNode.removeChild(row);
+
+}
+
+function htmlObjectToString(obj) {
+  var wrapper = document.createElement("div");
+  wrapper.appendChild(obj);
+  
+  return wrapper.innerHTML;
 }
