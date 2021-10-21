@@ -19,7 +19,7 @@ Simple, light-weight script for dynamically adding and removing Bootstrap form i
      
  3. Instantiate DynamicFields by referencing the element id of a bootstrap **.row** div containing the input fields that you want to replicate dynamically.
     ```javascript
-    <script>$('#id_of_row)').DynamicFields();</script>
+    <script>$('#id_of_row').DynamicFields();</script>
     ```
 
 ## Sample code
